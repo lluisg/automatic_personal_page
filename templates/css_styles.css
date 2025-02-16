@@ -40,6 +40,7 @@ html{
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    scroll-behavior: smooth;
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section{
@@ -10334,7 +10335,7 @@ img::-moz-selection{
 
 /* ----------------------------- BUTTONS ------------------------------------------- */
 
-{% set first_ID = (data.EXTRA_INFO.values() | selectattr('TYPE', 'eq', 'BUTTON') | first).ID -%}
+{% set first_ID = (data.CUSTOM.values() | selectattr('TYPE', 'eq', 'BUTTON') | first).ID -%}
 
 
 .btn-close{
@@ -10342,7 +10343,7 @@ img::-moz-selection{
   margin: 10px;
 }
 
-{% for TYPE in data.EXTRA_INFO.values() | selectattr('TYPE', 'eq', 'BUTTON') -%}
+{% for TYPE in data.CUSTOM.values() | selectattr('TYPE', 'eq', 'BUTTON') -%}
 .btn-modal-{{ TYPE.ID }}{
   background-color: #{{ TYPE.COLOR }};
   color: #fff;
@@ -10351,7 +10352,7 @@ img::-moz-selection{
 {% endfor %}
 
 .btn-close:hover
-{%- for TYPE in data.EXTRA_INFO.values() | selectattr('TYPE', 'eq', 'BUTTON') -%}
+{%- for TYPE in data.CUSTOM.values() | selectattr('TYPE', 'eq', 'BUTTON') -%}
 , .btn-modal-{{ TYPE.ID }}:hover
 {%- endfor -%}
 {

@@ -1,5 +1,5 @@
         <!----- Projects ----->
-        <section class="resume-section" id="projects">
+        <section class="resume-section" id="PROJECTS">
           <div class="container">
             <div class="text-center">
               <h2 class="section-heading text-uppercase mb-5">Projects</h2>
@@ -14,7 +14,7 @@
             {% endfor %}
             <div class="btns-type-projs mb-5">
               {% for type in unique_types %}
-                <button class="btn btn-outline-{{ data.EXTRA_INFO[type].COLOR }} btn-lg text-center mx-1" id="flt_btn_{{ data.EXTRA_INFO[type].ID }}" onclick="activateProjectFilter('{{ data.EXTRA_INFO[type].ID }}');">{{ data.EXTRA_INFO[type].NAME }}</button>
+                <button class="btn btn-outline-{{ data.CUSTOM[type].COLOR }} btn-lg text-center mx-1" id="flt_btn_{{ data.CUSTOM[type].ID }}" onclick="activateProjectFilter('{{ data.CUSTOM[type].ID }}');">{{ data.CUSTOM[type].NAME }}</button>
               {% endfor %}
               <button class="btn btn-outline-danger btn-lg text-center mx-1" id="flt_btn_all" onclick="activateProjectFilter('all');">All</button>
             </div>

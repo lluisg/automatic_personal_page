@@ -47,7 +47,7 @@
                 {% for LINK in PROJECT.LINKS %}
                   {% set LINK_type, LINK_value = LINK.split('|') %}
                 <a href="{{ LINK_value }}" target="_blank" class="btn border-dark btn-modal-{{ LINK_type }}">
-                  <i class="{{ data.EXTRA_INFO[LINK_type].ICON }}"></i> {{ data.EXTRA_INFO[LINK_type].NAME }}
+                  <i class="{{ data.CUSTOM[LINK_type].ICON }}"></i> {{ data.CUSTOM[LINK_type].NAME }}
                 </a>
                 {% endfor %}
                 <button class="btn btn-primary btn-close border-dark" data-dismiss="modal" type="button">

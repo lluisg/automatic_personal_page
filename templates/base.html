@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
             {% for section_name in data.keys() -%}
-              {% if section_name != 'EXTRA_INFO' %}
+              {% if section_name != 'CUSTOM' %}
               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#{{ section_name }}">{{ section_name }}</a></li>
               {%- endif %}
             {% endfor %}
@@ -42,7 +42,7 @@
       <!----- Page Content ----->
       <div class="container-fluid p-0">
       {% for section_name in data.keys() %}
-        {% if section_name != 'EXTRA_INFO' %}
+        {% if section_name != 'CUSTOM' %}
           {% include "sections/" + section_name + ".html" %}
           <hr class="m-0" />
         {%- endif %}

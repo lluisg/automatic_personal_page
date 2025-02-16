@@ -55,7 +55,7 @@ submit_btn.addEventListener('submit', (e)=>{
 
 
 // --------------------- SCRIPT BUTTONS ---------------------
-{% set first_ID = (data.EXTRA_INFO.values() | selectattr('TYPE', 'eq', 'TYPE') | first).ID -%}
+{% set first_ID = (data.CUSTOM.values() | selectattr('TYPE', 'eq', 'TYPE') | first).ID -%}
 
 window.onload = function() {
   activateProjectFilter('{{ first_ID }}');
@@ -72,7 +72,7 @@ function activateFilter(case_filter) {
   type_filter = "type_".concat(case_filter.toLowerCase());
 
   var allcases = [
-  {%- for TYPE in data.EXTRA_INFO.values() | selectattr('TYPE', 'eq', 'TYPE') -%}
+  {%- for TYPE in data.CUSTOM.values() | selectattr('TYPE', 'eq', 'TYPE') -%}
     {%- if TYPE.ID == first_ID -%}
       "type_{{ TYPE.ID }}"
     {%- else -%}
@@ -109,12 +109,12 @@ function selectButton(case_button) {
   // AND ALL THE OTHER BUTTONS TO ONLI THE OUTLINE
   button_filter = "flt_btn_".concat(case_button.toLowerCase());
 
-  {% for TYPE in data.EXTRA_INFO.values() | selectattr('TYPE', 'eq', 'TYPE') -%}
+  {% for TYPE in data.CUSTOM.values() | selectattr('TYPE', 'eq', 'TYPE') -%}
   document.getElementById("flt_btn_{{ TYPE.ID }}").classList.remove("btn-{{ TYPE.COLOR }}");
   document.getElementById("flt_btn_{{ TYPE.ID }}").classList.add("btn-outline-{{ TYPE.COLOR }}");
   {% endfor -%}
 
-  {% for TYPE in data.EXTRA_INFO.values() | selectattr('TYPE', 'eq', 'TYPE') -%}
+  {% for TYPE in data.CUSTOM.values() | selectattr('TYPE', 'eq', 'TYPE') -%}
     {%- if TYPE.ID == first_ID -%}
   if (button_filter=="flt_btn_{{ TYPE.ID }}"){
     document.getElementById("flt_btn_{{ TYPE.ID }}").classList.remove("btn-outline-{{ TYPE.COLOR }}");

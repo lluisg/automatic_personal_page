@@ -38,9 +38,9 @@ def clean_data(data):
         cleaned_data['SKILLS'][skill_type].append(skill)
 
     # dict extra info by id
-    cleaned_data['EXTRA_INFO'] = {}
-    for einfo in data["EXTRA_INFO"]:
-        cleaned_data['EXTRA_INFO'][einfo['ID']] = einfo
+    cleaned_data['CUSTOM'] = {}
+    for einfo in data["CUSTOM"]:
+        cleaned_data['CUSTOM'][einfo['ID']] = einfo
 
     # project types comma separated to list
     cleaned_data['PROJECTS'] = []
@@ -107,25 +107,35 @@ def main():
         os.makedirs(output_folder)
     output_file = 'index.html'
 
-    # Load data
-    data_dict = load_csv_as_json(csv_file)
-    data_dict = clean_data(data_dict)
+    try:
 
-    # Save json
-    save_json(data_dict, os.path.join(output_folder, json_file))
+        # Load data
+        data_dict = load_csv_as_json(csv_file)
+        data_dict = clean_data(data_dict)
 
-    # Render html
-    render_file(data_dict, html_file, output_file)
-    remove_empty_lines(output_file)
+        # Save json
+        save_json(data_dict, os.path.join(output_folder, json_file))
 
-    # Render javascript scripts
-    render_file(data_dict, scripts_file, os.path.join(output_folder, scripts_file))
+        # Render html
+        render_file(data_dict, html_file, output_file)
+        remove_empty_lines(output_file)
 
-    # Render css file
-    render_file(data_dict, css_file, os.path.join(output_folder, css_file))
+        # Render javascript scripts
+        render_file(data_dict, scripts_file, os.path.join(output_folder, scripts_file))
 
-    current_time = datetime.now().strftime("%H:%M:%S")
-    print('rendered at', current_time)
+        # Render css file
+        render_file(data_dict, css_file, os.path.join(output_folder, css_file))
+
+        current_time = datetime.now().strftime("%H:%M:%S")
+        print('Rendered succesfully at', current_time)
+
+        input("Press enter to finalize...")
+
+    except Exception as e:
+        print('Error:')
+        print(e)
+        input("Execution failed,press enter to finalize...")
+
 
 
 if __name__ == "__main__":

@@ -1,0 +1,31 @@
+        <!----- Courses ----->
+        <section class="resume-section" id="courses">
+          <div class="resume-section-content">
+            <div class="text-center">
+              <h2 class="section-heading text-uppercase mb-5">Courses</h2>
+            </div>
+            {% for COURSE in data.COURSES %}
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+              <div class="flex-grow-1">
+                <div class="subheading mb-0">
+                  {% if COURSE.LINK_COURSE == COURSE.LINK_COURSE %}
+                  <a href="{{ COURSE.LINK_COURSE }}" target="_blank">{{ COURSE.TITLE }}</a>
+                  {% else %}
+                    {{ COURSE.TITLE }}
+                  {% endif %}
+                </div>
+                {% if COURSE.SUBTITLE == COURSE.SUBTITLE %}
+                <div class="mb-0">
+                  {% if COURSE.LINK_SUBTITLE == COURSE.LINK_SUBTITLE %}
+                  <a href="{{ COURSE.LINK_SUBTITLE }}" target="_blank">{{ COURSE.SUBTITLE }}</a>
+                  {% else %}
+                    {{ COURSE.SUBTITLE }}
+                  {% endif %}
+                </div>
+                {% endif %}
+              </div>
+              <div class="flex-shrink-0 text-right"><span class="text-primary">{{ COURSE.ENTITY }}<br />{{ COURSE.TIME }}</span></div>
+            </div>
+          {% endfor %}
+          </div>
+        </section>

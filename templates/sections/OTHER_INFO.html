@@ -1,0 +1,15 @@
+
+              <div class="other-info-container">
+                <h2 class="section-heading text-uppercase">Other Info</h2>
+                <div class="elements-container">
+                  {% for OTHER in data.OTHER_INFO %}
+                  <p>
+                    <span><i class="fas fa-check"></i></span>
+                    {{ OTHER.INFO }}
+                  </p>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>

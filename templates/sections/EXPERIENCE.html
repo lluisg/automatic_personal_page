@@ -1,0 +1,18 @@
+        <!----- Experience ----->
+        <section class="resume-section" id="experience">
+          <div class="resume-section-content">
+            <div class="text-center">
+              <h2 class="section-heading text-uppercase mb-5">Experience</h2>
+            </div>
+            {% for EXP in data.EXPERIENCE %}
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+              <div class="flex-grow-1">
+                  <h3 class="mb-0">{{ EXP.TITLE }}</h3>
+                  <div class="subheading mb-3"><img class="work_logo" src="imgs/companies/{{ EXP.IMG_LOGO }}" alt="{{ EXP.IMG_LOGO }}" /> | {{ EXP.COMPANY }}</div>
+                  <p> {{ EXP.DESCRIPTION }} </p>
+              </div>
+              <div class="flex-shrink-0 text-right"><span class="text-primary">{{ EXP.START }} - {{ EXP.END }}</span></div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>

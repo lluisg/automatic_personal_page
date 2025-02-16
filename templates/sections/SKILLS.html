@@ -1,0 +1,23 @@
+        <!----- Skills----->
+        <section class="resume-section" id="skills">
+          <div class="resume-section-content">
+            <div class="text-center">
+              <h2 class="section-heading text-uppercase mb-5">Skills</h2>
+            </div>
+            <h3>Programming Languages & Tools</h3>
+            <div class="w-100 container-skills">
+            {% for SKILL_TYPE, SKILLS in data.SKILLS.items() %}
+              <div class="subheading">{{ SKILL_TYPE }}</div>
+              <div class="flex-icons">
+              {% for SKILL in SKILLS %}
+                <a class="list-inline-item skill" href="{{ SKILL.LINK }}" target="_blank" style="color: #{{ SKILL.COLOR }};">
+                  <img src="imgs/skills/{{ SKILL.IMG }}" class="logo_skills">
+                  {{ SKILL.NAME }}
+                  </img>
+                </a>
+            {% endfor %}
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+        </section>

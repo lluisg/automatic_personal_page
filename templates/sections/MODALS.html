@@ -1,0 +1,62 @@
+
+
+      <!-- Portfolio Modals-------------------------------------------------->
+      {% for PROJECT in data.PROJECTS %}
+      <!----- {{ PROJECT.TITLE | upper }} ----->
+      {% set TITLE_clean = PROJECT.TITLE | replace(' ','') | replace(',','') | replace(':','') | replace('-','') | replace('(','') | replace(')','') | replace('?','') | replace('!','') %}
+      <div class="portfolio-modal modal fade" id="portfolio{{ TITLE_clean }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal"><img src="imgs/close-icon.svg" alt="Close modal" /></div>
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-10">
+                  <div class="modal-body">
+                    <h2 class="title-modal text-uppercase">{{ PROJECT.TITLE }}</h2>
+                    <p class="item-intro text-muted">{{ PROJECT.TIME }}</p>
+                    <div class="container modal-container">
+                      {% if PROJECT.IMG_INSIDE == PROJECT.IMG_INSIDE %}
+                      <div class="container modal-contiguous-container">
+                        <div class="small-text">
+                          <p class="psubgrouptitle">Description:</p>
+                          <p class="pdescription">{{ PROJECT.DESCRIPTION }}</p>
+                        </div>
+                        <div class="modal-image-container">
+                          <img class="img-fluid d-block img_modal" src="imgs/projects/{{ PROJECT.IMG_INSIDE }}" Project Image />
+                        </div>
+                      </div>
+                      {% else %}
+                      <p class="psubgrouptitle">Description:</p>
+                      <p class="pdescription">{{ PROJECT.DESCRIPTION }}</p>
+                      {% endif %}
+                      <p class="psubgrouptitle">Programmed with:</p>
+                      <div class="list-tools">
+                        {% for SKILL_TYPE in data.SKILLS %}
+                          {% for SKILL in data.SKILLS[SKILL_TYPE] %}
+                            {% if SKILL.ID in (PROJECT.SKILLS | string).replace(' ', '').split(',') %}
+                        <a class="text-tools" style="color: #{{ SKILL.COLOR }};"><img src="imgs/skills/{{ SKILL.IMG }}" alt="" class="logo_programing" /> {{ SKILL.NAME }}</a>
+                            {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                {% for LINK in PROJECT.LINKS %}
+                  {% set LINK_type, LINK_value = LINK.split('|') %}
+                <a href="{{ LINK_value }}" target="_blank" class="btn border-dark btn-modal-{{ LINK_type }}">
+                  <i class="{{ data.EXTRA_INFO[LINK_type].ICON }}"></i> {{ data.EXTRA_INFO[LINK_type].NAME }}
+                </a>
+                {% endfor %}
+                <button class="btn btn-primary btn-close border-dark" data-dismiss="modal" type="button">
+                  <i class="fas fa-times mr-1"></i>
+                  Close Project
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}

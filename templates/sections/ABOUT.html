@@ -1,0 +1,23 @@
+        <!----- About ----->
+        <section class="resume-section" id="about">
+          <div class="resume-section-content">
+            <h1 class="name-portfolio mb-0">
+              {{ data.ABOUT[0].NAME }}
+              <span class="text-primary">{{ data.ABOUT[0].SURNAME }}</span>
+            </h1>
+            <div>
+            <div class="subheading mb-5">
+                <a href="mailto:{{ data.ABOUT[0].EMAIL }}">{{ data.ABOUT[0].EMAIL }}</a>
+            </div>
+            <p class="lead mb-5">
+              <a class="subheading mb-5">{{ data.ABOUT[0].JOB_TITLE }}</a><br>
+              {{ data.ABOUT[0].DESCRIPTION }}
+            </p>
+            </div>
+            <div class="social-icons">
+              <a class="social-icon" href="{{ data.ABOUT[0].LINKEDIN }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              <a class="social-icon" href="{{ data.ABOUT[0].GITHUB }}" target="_blank"><i class="fab fa-github"></i></a>
+              <a class="social-icon" href="mailto:{{ data.ABOUT[0].EMAIL }}" target="_blank"><i class="fa fa-envelope-open"></i></a>
+            </div>
+          </div>
+        </section>

@@ -1,0 +1,32 @@
+        <!----- Contact ----->
+        <section class="resume-section" id="contact">
+          <div class="resume-section-content">
+            <div class="text-center">
+              <h2 class="section-heading text-uppercase mb-5">Contact</h2>
+            </div>
+            <div class="container mb-5">
+              <p class="text-center">{{ data.CONTACT[0].TEXT }}</p>
+              <form id="contact-form" action="https://formsubmit.co/f1aa8b04c973b5f015f60fb3e5245d09" method="POST" class="p-4" enctype="multipart/form-data">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="_next" value="{{ data.CONTACT[0].AFTER }}">
+                  <input type="hidden" name="_template" value="table">
+
+                  <div class="container-form-top">
+                    <div class="container-name">
+                      <input id="contact-name" type="text" name="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="container-email">
+                      <input id="contact-email" type="email" name="email" class="form-control" placeholder="Email Address" required>
+                    </div>
+                  </div>
+                  <div class="container-message">
+                    <textarea id="contact-message" placeholder="Your Message" class="form-control" name="message" rows="7" required></textarea>
+                  </div>
+                  <div class="container-file">
+                    <input id="contact-file" type="file" name="attachment" accept=".doc, .docx, .txt, .odt, .pdf">
+                  </div>
+                  <button type="submit" id="btn-contact-submit" class="btn btn-lg btn-dark btn-block mt-3">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </section>

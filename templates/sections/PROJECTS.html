@@ -1,0 +1,38 @@
+        <!----- Projects ----->
+        <section class="resume-section" id="projects">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="section-heading text-uppercase mb-5">Projects</h2>
+            </div>
+            {% set unique_types = [] %}
+            {% for PROJECT in data.PROJECTS %}
+                {% for type in PROJECT.TYPES %}
+                    {% if type not in unique_types %}
+                        {% set _ = unique_types.append(type) %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            <div class="btns-type-projs mb-5">
+              {% for type in unique_types %}
+                <button class="btn btn-outline-{{ data.EXTRA_INFO[type].COLOR }} btn-lg text-center mx-1" id="flt_btn_{{ data.EXTRA_INFO[type].ID }}" onclick="activateProjectFilter('{{ data.EXTRA_INFO[type].ID }}');">{{ data.EXTRA_INFO[type].NAME }}</button>
+              {% endfor %}
+              <button class="btn btn-outline-danger btn-lg text-center mx-1" id="flt_btn_all" onclick="activateProjectFilter('all');">All</button>
+            </div>
+            <div class="row row-projects">
+              {% for PROJECT in data.PROJECTS %}
+                <div class="col-lg-4 col-sm-6{%- for TYPE in PROJECT.TYPES %} type_{{ TYPE }}{%- endfor -%}">
+                  <div class="portfolio-item">
+                    {% set TITLE_clean = PROJECT.TITLE | replace(' ','') | replace(',','') | replace(':','') | replace('-','') | replace('(','') | replace(')','') | replace('?','') | replace('!','') %}
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolio{{ TITLE_clean }}">
+                      <img class="img-fluid img-thumbnail" src="imgs/projects/{{ PROJECT.IMG_THUMBNAIL }}" alt="Project Thumbnail" />
+                    </a>
+                    <div class="portfolio-caption" style="text-align: center;">
+                      <div class="portfolio-caption-heading">{{ PROJECT.TITLE }}</div>
+                      <div class="portfolio-caption-subheading text-muted">{{ PROJECT.TAG }}<br><br></div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </section>

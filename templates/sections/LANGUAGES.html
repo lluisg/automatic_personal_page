@@ -1,0 +1,16 @@
+        <!----- Other Info ----->
+        <section class="resume-section" id="otherinfo">
+          <div class="resume-section-content">
+            <!-- <h2 class="mb-5">Other Info</h2>-->
+            <div class="all-info-container">
+              <div class="languages-container">
+                <h2 class="section-heading text-uppercase">Languages</h2>
+                <div class="elements-container">
+                {% for LANGUAGE in data.LANGUAGES %}
+                  <p>
+                    <span class="list-inline-item"><img src="imgs/languages/{{ LANGUAGE.ICON }}" class="logo_languages" style="width:1.5rem;height:1.5rem;"></img></span>
+                    {{ LANGUAGE.LANGUAGE }} {{ '&nbsp;' * (10 - LANGUAGE.LANGUAGE | length) }}-- {{ LANGUAGE.LEVEL }}
+                  </p>
+                {% endfor %}
+                </div>
+              </div>

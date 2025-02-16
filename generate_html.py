@@ -105,7 +105,7 @@ def main():
     output_folder = './generated'
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
-    output_file = 'webpage.html'
+    output_file = 'index.html'
 
     # Load data
     data_dict = load_csv_as_json(csv_file)

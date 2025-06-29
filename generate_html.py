@@ -95,6 +95,7 @@ def save_json(data, filepath):
 
 def main():
     """Main function to load CSV as JSON and print the result."""
+    print('Starting')
     csv_file = "./information.xlsx"
 
     json_file = "output_json.json"
@@ -109,21 +110,26 @@ def main():
 
     try:
 
+        print('Loading data')
         # Load data
         data_dict = load_csv_as_json(csv_file)
         data_dict = clean_data(data_dict)
 
         # Save json
+        print('Saving json')
         save_json(data_dict, os.path.join(output_folder, json_file))
 
         # Render html
+        print('Rendering HTML page')
         render_file(data_dict, html_file, output_file)
         remove_empty_lines(output_file)
 
         # Render javascript scripts
+        print('Rendering JS scripts')
         render_file(data_dict, scripts_file, os.path.join(output_folder, scripts_file))
 
         # Render css file
+        print('Rendering CSS templates')
         render_file(data_dict, css_file, os.path.join(output_folder, css_file))
 
         current_time = datetime.now().strftime("%H:%M:%S")

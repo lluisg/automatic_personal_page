@@ -1,2 +1,16 @@
-env_auto/*
-build/*
+# venv
+env_auto/
+
+# production code
+build/
+
+# folder created on testing
+generated/
+
+# generated files on run not needed (can be run to generate them)
+./generate_Portfolio.exe
+./generate_Portfolio.spec
+./index.html
+
+# temporal excel file
+~$information

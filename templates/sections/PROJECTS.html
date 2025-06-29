@@ -5,10 +5,14 @@
               <h2 class="section-heading text-uppercase mb-5">Projects</h2>
             </div>
             {% set unique_types = [] %}
+            {% set _ = unique_types.append('relevant') %}
             {% for PROJECT in data.PROJECTS %}
                 {% for type in PROJECT.TYPES %}
-                    {% if type not in unique_types %}
-                        {% set _ = unique_types.append(type) %}
+                    <!-- # 'relevant' case should be the first -->
+                    {% if type != 'relevant' %}
+                      {% if type not in unique_types %}
+                          {% set _ = unique_types.append(type) %}
+                      {% endif %}
                     {% endif %}
                 {% endfor %}
             {% endfor %}

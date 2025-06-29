@@ -1,6 +1,6 @@
 
 
-      <!-- Portfolio Modals-------------------------------------------------->
+<!-- Portfolio Modals-------------------------------------------------->
       {% for PROJECT in data.PROJECTS %}
       <!----- {{ PROJECT.TITLE | upper }} ----->
       {% set TITLE_clean = PROJECT.TITLE | replace(' ','') | replace(',','') | replace(':','') | replace('-','') | replace('(','') | replace(')','') | replace('?','') | replace('!','') %}

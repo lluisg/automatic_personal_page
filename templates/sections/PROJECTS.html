@@ -1,4 +1,4 @@
-        <!----- Projects ----->
+<!----- Projects ----->
         <section class="resume-section" id="PROJECTS">
           <div class="container">
             <div class="text-center">
@@ -8,7 +8,6 @@
             {% set _ = unique_types.append('relevant') %}
             {% for PROJECT in data.PROJECTS %}
                 {% for type in PROJECT.TYPES %}
-                    <!-- # 'relevant' case should be the first -->
                     {% if type != 'relevant' %}
                       {% if type not in unique_types %}
                           {% set _ = unique_types.append(type) %}
